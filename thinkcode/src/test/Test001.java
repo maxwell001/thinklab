@@ -1,5 +1,7 @@
 package test;
 
-public class Test001 {
+import java.text.SimpleDateFormat;
 
+public class Test001 {
+	SimpleDateFormat sf = 
 }
