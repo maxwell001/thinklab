@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap>
+
+	<typeAlias alias="queryModel" type="com.besttone.data.model.Query"/>
+	<typeAlias alias="lcModel" type="com.besttone.data.model.LabelAndCellphoneNumModel"/>
+	 
+	<!-- telphone number data start -->	
+	<select id = "getTelphoneNum" parameterClass="queryModel" resultClass = "String">
+    	<![CDATA[
+    		SELECT telephone
+			FROM YPS_U_3_31
+			WHERE org_id>=#startId# AND org_id<=#endId# and telephone IS NOT NULL
+      	]]>
+    </select>
+    <select id = "getTelphoneNumZj" parameterClass="queryModel" resultClass = "String">
+    	<![CDATA[
+    		SELECT telephone
+			FROM YPS_U_3_33
+			WHERE org_id>=#startId# AND org_id<=#endId# and telephone IS NOT NULL
+      	]]>
+    </select>
+    <insert id="saveQueryLog" parameterClass="queryModel">
+		INSERT INTO TELNUM_QUERY_LOG(ID,START_ID,END_ID,QUERY_DATE,DATA_SOURCE,STATUS)
+		VALUES((select sys_guid() from dual),#startId#,#endId#,(select sysdate from dual),#dataSource#,#status#)
+	</insert>
+   	<select id="getStartId" resultClass="queryModel">
+   		SELECT START_ID startId ,END_ID endId,DATA_SOURCE dataSource,STATUS status
+   		FROM TELNUM_QUERY_LOG
+   		WHERE end_id IS NOT NULL AND data_source=#dataSource# ORDER BY end_id DESC
+   	</select>
+   	<select id="getDataMaxId" resultClass="Long">
+   		SELECT max(org_id)
+   		FROM YPS_U_3_31
+   		WHERE telephone IS NOT NULL
+   	</select>
+   	<select id="getZjDataMaxId" resultClass="Long">
+   		SELECT max(org_id)
+   		FROM YPS_U_3_33
+   		WHERE telephone IS NOT NULL
+   	</select>
+   	<insert id="saveLabelPhone" parameterClass="lcModel">
+		INSERT INTO TEL_LABEL_CELLPHONE_INFO(TELPHONENUM,CELLPHONENUM,AGE_LEVEL_CODE,INDUSTRY_CD_1,CITY_FLAG,ARPU_LEVEL_CODE)
+		VALUES(#telphonenum#,#cellphonenum#,#age_level_code#,#industry_cd_1#,#city_flag#,#arpu_level_code#)
+	</insert>
+    <!-- telphone number data end -->
+    
+</sqlMap>

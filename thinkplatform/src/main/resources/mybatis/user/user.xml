@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinklab.platform.web.homesite.dao.IUserDao">
+	
+	<select id="getUserInfoById" resultType="User">
+	  	select * from homesite_user where id = #{id}
+	</select>
+  	<select id="getUserInfoByLoginName" resultType="User">
+	  	select * from homesite_user where loginName = #{loginName}
+	</select>
+	<insert id="saveUserInfo" parameterType="User">
+		inert into homesite_user(userName,loginName,passWard,status,
+			type,onlineTimeById,lastLoginDate,registeDate)
+		values(#userName#,#loginName#,#passWard#,#status#,#type#,
+			#onlineTimeById#,#lastLoginDate#,#registeDate#)
+	</insert>
+	<delete id="deleteUserInfoById">
+		delete from homesite_user where id=#id#
+	</delete>
+	
+</mapper>
