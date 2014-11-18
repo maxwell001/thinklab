@@ -1,15 +1,14 @@
-package com.besttone.data.util;
+package com.besttone.io;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 /**
- *properties文件操作工具类
+ *properties
  */
 public class PropertiesUtil {
 	/**
-	 * 加载properties文件
 	 * @param fileName
 	 * @return
 	 */
@@ -24,7 +23,6 @@ public class PropertiesUtil {
 		return properties;
 	}
 	/**
-	 * 获取properties对应key的值
 	 * @param fileName
 	 * @param key
 	 * @return

@@ -1,4 +1,5 @@
-package com.besttone.data.util;
+package com.besttone.security;
+
 import java.util.TreeMap;
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;
