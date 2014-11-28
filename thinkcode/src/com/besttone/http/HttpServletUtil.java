@@ -1,6 +1,7 @@
 package com.besttone.http;
 
 import java.io.IOException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -55,6 +56,26 @@ public class HttpServletUtil {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}   
+	}
+	
+	public String getUrlParameter(HttpServletRequest request,String key){
+		String res = "";
+		try{
+			res = request.getParameter(key);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	public Object getSessionAttribute(HttpServletRequest request,String key){
+		Object obj = "";
+		try{
+			obj = request.getSession().getAttribute(key);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return obj;
 	}
 	
 	public static void main(String[] args) {

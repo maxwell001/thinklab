@@ -2,6 +2,7 @@ package com.besttone.io;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Properties;
 
 /**
@@ -39,4 +40,20 @@ public class PropertiesUtil {
 		}
 		return value;
 	}
+	/**
+	 * properties中文乱码
+	 * @param fileName
+	 * @return
+	 */
+	public static Properties loadProperties2(String fileName){
+		Properties properties = new Properties();
+		try {
+			InputStreamReader is = new InputStreamReader(PropertiesUtil.class.getResourceAsStream("/labelexelinfo.properties"), "UTF-8");
+			properties.load(is);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return properties;
+	}
+	
 }
