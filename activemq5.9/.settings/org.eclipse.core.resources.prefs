@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+encoding//src/com/activemq/jpa/dao/AccessionNoDao.java=UTF-8
+encoding//src/com/activemq/jpa/dao/BaseDao.java=UTF-8
+encoding//src/com/activemq/jpa/dao/BaseDaoImpl.java=UTF-8
+encoding//src/com/activemq/jpa/dao/Page.java=UTF-8
+encoding//src/com/activemq/jpa/model/AccessionNo.java=UTF-8
+encoding//src/com/activemq/jpa/model/BaseEntity.java=UTF-8
