@@ -16,7 +16,6 @@
  */
 package com.activemq.test;
 
-import java.text.DecimalFormat;
 import javax.jms.MapMessage;
 import javax.jms.Message;
 import javax.jms.MessageListener;
@@ -26,12 +25,8 @@ public class Listener implements MessageListener {
     public void onMessage(Message message) {  
         try {  
             MapMessage map = (MapMessage)message;  
-            String stock = map.getString("stock");  
-            double price = map.getDouble("price");  
-            double offer = map.getDouble("offer");  
-            boolean up = map.getBoolean("up");  
-            DecimalFormat df = new DecimalFormat( "#,###,###,##0.00" );  
-            System.out.println(stock + "\t" + df.format(price) + "\t" + df.format(offer) + "\t" + (up?"up":"down"));  
+            String sql = map.getString("sql");  
+            System.out.println(sql);  
         } catch (Exception e) {  
             e.printStackTrace();  
         }  

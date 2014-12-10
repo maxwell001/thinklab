@@ -7,8 +7,6 @@ package com.activemq.jpa.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -49,34 +47,6 @@ public class Page<T> {
 
     private String message = ""; // 璁剧疆鎻愮ず娑堟伅锛屾樉绀哄湪鈥滃叡n鏉♀�涔嬪悗
 
-    /**
-     * 鏋勯�鏂规硶
-     * 
-     * @param request
-     *            浼犻� repage 鍙傛暟锛屾潵璁颁綇椤电爜
-     * @param response
-     *            鐢ㄤ簬璁剧疆 Cookie锛岃浣忛〉鐮�
-     */
-    public Page(HttpServletRequest request, HttpServletResponse response) {
-        this(request, response, -2);
-    }
-
-    /**
-     * 鏋勯�鏂规硶
-     * 
-     * @param request
-     *            浼犻� repage 鍙傛暟锛屾潵璁颁綇椤电爜
-     * @param response
-     *            鐢ㄤ簬璁剧疆 Cookie锛岃浣忛〉鐮�
-     * @param pageSize
-     *            鍒嗛〉澶у皬锛屽鏋滀紶閫�-1 鍒欎负涓嶅垎椤碉紝杩斿洖鎵�湁鏁版嵁
-     */
-    public Page(HttpServletRequest request, HttpServletResponse response,
-            int pageSize) {
-        // 璁剧疆椤电爜鍙傛暟锛堜紶閫抮epage鍙傛暟锛屾潵璁颁綇椤电爜锛�
-        String no = request.getParameter("pageNo");
-        
-    }
 
     /**
      * 鏋勯�鏂规硶

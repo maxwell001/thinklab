@@ -5,6 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.activemq.jpa.model.AccessionNo;
 import com.activemq.jpa.service.AccessionService;
+import com.activemq.log.SpySqlLogUtil;
 
 public class Test001 {
 	
@@ -17,5 +18,9 @@ public class Test001 {
 		no.setSaved("1");
 		no.setType("1");
 		accessionService.save(no);
+		String sql = SpySqlLogUtil.getPeriodSql();
+		System.out.println(sql);
+		Publisher pub = new Publisher();
+		pub.sendMessage(sql);
 	}
 }

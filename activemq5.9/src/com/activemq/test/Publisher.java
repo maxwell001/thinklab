@@ -43,17 +43,22 @@ public class Publisher {
     protected Session session;  
     protected MessageProducer producer;  
       
-    public Publisher() throws JMSException {  
-        factory = new ActiveMQConnectionFactory(brokerURL);  
-        connection = factory.createConnection();  
-        try {  
-        connection.start();  
-        } catch (JMSException jmse) {  
-            connection.close();  
-            throw jmse;  
+    public Publisher(){  
+        try { 
+        	factory = new ActiveMQConnectionFactory(brokerURL);  
+            connection = factory.createConnection();  
+            connection.start(); 
+            session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);  
+            producer = session.createProducer(null);  
+        } catch (Exception jmse) {  
+            try {
+				connection.close();
+			} catch (JMSException e) {
+				e.printStackTrace();
+			}
+            jmse.printStackTrace();
         }  
-        session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);  
-        producer = session.createProducer(null);  
+        
     }  
       
     public void close() throws JMSException {  
@@ -64,57 +69,30 @@ public class Publisher {
       
     public static void main(String[] args) throws JMSException {  
         Publisher publisher = new Publisher(); 
-        String[] message = {"test"};
-        while (total < 10) {  
-            for (int i = 0; i < count; i++) {  
-                publisher.sendMessage(message);  
-            }  
-            total += count;  
-            System.out.println("Published '" + count + "' of '" + total + "' price messages");  
-            try {  
+        publisher.sendMessage("tesfdfdaf");  
+        System.out.println("Published '" + count + "' of '" + total + "' price messages");  
+        try {  
               Thread.sleep(1000);  
             } catch (InterruptedException x) {  
             }  
-        }  
         publisher.close();  
     }  
   
-    protected void sendMessage(String[] stocks) throws JMSException {  
-        int idx = 0;  
-        while (true) {  
-            idx = (int)Math.round(stocks.length * Math.random());  
-            if (idx < stocks.length) {  
-                break;  
-            }  
-        }  
-        String stock = stocks[idx];  
-        Destination destination = session.createTopic("STOCKS." + stock);  
-        Message message = createStockMessage(stock, session);  
-        System.out.println("Sending: " + ((ActiveMQMapMessage)message).getContentMap() + " on destination: " + destination);  
-        producer.send(destination, message);  
+    protected void sendMessage(String str) { 
+    	try{
+	        String stock = "test";  
+	        Destination destination = session.createTopic("STOCKS." + stock);  
+	        Message message = createStockMessage(str, session);  
+	        System.out.println("Sending: " + ((ActiveMQMapMessage)message).getContentMap() + " on destination: " + destination);  
+	        producer.send(destination, message); 
+    	}catch(Exception e){
+    		e.printStackTrace();
+    	}
     }  
   
-    protected Message createStockMessage(String stock, Session session) throws JMSException {  
-        Double value = LAST_PRICES.get(stock);  
-        if (value == null) {  
-            value = new Double(Math.random() * 100);  
-        }  
-  
-        // lets mutate the value by some percentage  
-        double oldPrice = value.doubleValue();  
-        value = new Double(mutatePrice(oldPrice));  
-        LAST_PRICES.put(stock, value);  
-        double price = value.doubleValue();  
-  
-        double offer = price * 1.001;  
-  
-        boolean up = (price > oldPrice);  
-  
+    protected Message createStockMessage(String str, Session session) throws JMSException {  
         MapMessage message = session.createMapMessage();  
-        message.setString("stock", stock);  
-        message.setDouble("price", price);  
-        message.setDouble("offer", offer);  
-        message.setBoolean("up", up);  
+        message.setString("sql", str);  
         return message;  
     }  
   
