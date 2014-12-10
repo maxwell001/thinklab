@@ -9,8 +9,7 @@ import javax.crypto.SecretKey;
 import org.apache.commons.codec.binary.Base64;
 
 /**
- *瀹夊叏鐩稿叧宸ュ叿绫�
- */
+ *鐎瑰鍙忛惄绋垮彠瀹搞儱鍙跨猾锟� */
 public class SecurityUtil {
 //	private static String encryptAlgorithm;
 //	private static String secretKey;
@@ -24,15 +23,13 @@ public class SecurityUtil {
 //    }
     
     /**
-     * 鍔犲瘑
+     * 閸旂姴鐦�
      * @param src
      * @return
      */
     public static byte[] encryptMode(String algorithm,String secretKey,String padadWay,byte[] src) {
         try {
-        	 //瀹炰緥鍖栬礋璐ｅ姞瀵�瑙ｅ瘑鐨凜ipher宸ュ叿绫�
-             Cipher c1 = Cipher.getInstance(padadWay);
-             //鍒濆鍖栦负鍔犲瘑妯″紡
+        	 Cipher c1 = Cipher.getInstance(padadWay);
              c1.init(Cipher.ENCRYPT_MODE, generateKey(algorithm,secretKey));
              return c1.doFinal(src);
          } catch (java.security.NoSuchAlgorithmException e1) {
@@ -46,14 +43,14 @@ public class SecurityUtil {
      }
     
     /**
-     * 瑙ｅ瘑
+     * 鐟欙絽鐦�
      * @param src
      * @return
      */
     public static byte[] decryptMode(String algorithm,String padadWay,String secretKey,byte[] src) {  
         try {
         	Cipher c1 = Cipher.getInstance(padadWay);
-        	//鍒濆鍖栦负瑙ｅ瘑妯″紡
+        	//閸掓繂顫愰崠鏍﹁礋鐟欙絽鐦戝Ο鈥崇础
             c1.init(Cipher.DECRYPT_MODE, generateKey(algorithm,secretKey));
             return c1.doFinal(src);
         } catch (java.security.NoSuchAlgorithmException e1) {
@@ -67,14 +64,14 @@ public class SecurityUtil {
      }
     
     /**
-     * 鐢熸垚瀵嗛挜
+     * 閻㈢喐鍨氱�鍡涙寽
      * @param secretKey
      * @return
      * @throws NoSuchAlgorithmException
      */
     public static SecretKey generateKey(String algorithm,String secretKey) throws NoSuchAlgorithmException{  
     	SecureRandom secureRandom = new SecureRandom(secretKey.getBytes());  
-    	// 涓烘垜浠�鎷╃殑DES绠楁硶鐢熸垚涓�釜KeyGenerator瀵硅薄  
+    	// 娑撶儤鍨滄禒顒勶拷閹封晝娈慏ES缁犳纭堕悽鐔稿灇娑擄拷閲淜eyGenerator鐎电钖� 
     	KeyGenerator kg = null;  
     	try {  
     	    kg = KeyGenerator.getInstance(algorithm);  
@@ -82,12 +79,12 @@ public class SecurityUtil {
     		e.printStackTrace();
     	}  
     	kg.init(secureRandom);  
-    	// 鐢熸垚瀵嗛挜  
+    	// 閻㈢喐鍨氱�鍡涙寽  
     	return kg.generateKey();  
     }
     
     /**
-     * 浣跨敤Base64鏂瑰紡灏哹yte杞崲涓簊tring
+     * 娴ｈ法鏁ase64閺傜懓绱＄亸鍝箉te鏉烆剚宕叉稉绨妕ring
      * @param src
      * @return
      */
@@ -103,7 +100,7 @@ public class SecurityUtil {
     }
     
     /**
-     * 浣跨敤Base64鏂瑰紡灏哠tring杞琤yte[]
+     * 娴ｈ法鏁ase64閺傜懓绱＄亸鍝爐ring鏉炵悿yte[]
      * @param src
      * @return
      */
