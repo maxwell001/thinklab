@@ -16,8 +16,9 @@ public class PropertiesUtil {
 	public static Properties loadProperties(String fileName){
 		Properties properties = new Properties();
 		try {
-			InputStream is = PropertiesUtil.class.getResourceAsStream(fileName);
-			properties.load(is);
+//			InputStream is = PropertiesUtil.class.getResourceAsStream(fileName);
+			InputStreamReader isr = new InputStreamReader(PropertiesUtil.class.getResourceAsStream(fileName), "UTF-8");
+			properties.load(isr);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -32,8 +33,10 @@ public class PropertiesUtil {
 		String value = "";
 		Properties properties = new Properties();
 		try {
-			InputStream is = PropertiesUtil.class.getResourceAsStream(fileName);
-			properties.load(is);
+//			InputStream is = PropertiesUtil.class.getResourceAsStream(fileName);
+			//防止中文乱码
+			InputStreamReader isr = new InputStreamReader(PropertiesUtil.class.getResourceAsStream(fileName), "UTF-8");
+			properties.load(isr);
 			value = properties.getProperty(key);
 		} catch (IOException e) {
 			e.printStackTrace();
