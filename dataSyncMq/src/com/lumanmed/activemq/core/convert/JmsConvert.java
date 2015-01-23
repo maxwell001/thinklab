@@ -28,7 +28,7 @@ public class JmsConvert implements MessageConverter{
 			message = session.createTextMessage();
 			message.setStringProperty("sql", obj.toString());
 		}
-		System.out.println("message:"+message);
+//		System.out.println("message:"+message);
 		return message;
 	}
 	

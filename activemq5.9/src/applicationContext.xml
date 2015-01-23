@@ -85,53 +85,50 @@
         proxy-target-class="true" />
         
     <!-- active mq -->
-     <!-- 1.配置connectionFactory  org.apache.activemq.pool.PooledConnectionFactory-->  
-    <bean id="jmsFactory" class="org.springframework.jms.connection.CachingConnectionFactory" destroy-method="destroy">  
+    <!-- 1.配置destroy-method="destory" connectionFactory targetConnectionFactory org.apache.activemq.pool.PooledConnectionFactoryorg.springframework.jms.connection.CachingConnectionFactory -->  
+    <bean id="jmsFactory" class="org.springframework.jms.connection.CachingConnectionFactory" >  
         <property name="targetConnectionFactory">  
             <bean class="org.apache.activemq.ActiveMQConnectionFactory">  
                 <property name="brokerURL">  
-                    <value>tcp://localhost:61616</value>  
+                    <value>tcp://localhost:10086</value>  
                 </property> 
                 <property name="useAsyncSend" value="true" />   
             </bean>  
         </property>  
-        <property name="sessionCacheSize" value="10" />  
+        <property name="clientId" value="clientId_001"/>
+        <property name="sessionCacheSize" value="10" />
     </bean>  
-      
     <!-- 2.定义消息目标 -->  
     <bean id="destination" class="org.apache.activemq.command.ActiveMQTopic">  
-        <constructor-arg index="0" value="topic_sql"></constructor-arg>  
+        <constructor-arg value="topic_sql"></constructor-arg>  
     </bean>  
-      
-  
+    <!-- 消息转换 -->  
+    <bean id="messageConverter" class="com.lumanmed.activemq.core.convert.JmsConvert" />
     <!-- 3.配置Spring JMS Template -->  
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">  
         <!-- 3.1 注入jmsFactory -->  
-        <property name="connectionFactory" ref="jmsFactory"></property>  
+        <property name="connectionFactory" ref="jmsFactory" />  
         <!-- 3.2 配置消息目标 -->  
         <property name="defaultDestination" ref="destination" />  
         <!-- 订阅发布模式 -->  
-        <property name="pubSubDomain" value="true" />  
-        <property name="receiveTimeout" value="10000" /> 
-        <property name="messageConverter" ref="messageConverter" /> 
+        <property name="pubSubDomain" value="true" />
+        <property name="receiveTimeout" value="10000" />
+        <property name="messageConverter" ref="messageConverter" />
     </bean>  
-      
     <!-- 4.配置生产者 -->  
     <bean id="jmsPublisher" class="com.lumanmed.activemq.core.impl.PublisherServiceImpl">  
         <property name="jmsTemplate" ref="jmsTemplate"/> 
         <property name="destination" ref="destination"/>  
     </bean>  
-  
     <!-- 消息消费者配置 （自己定义）-->  
     <bean id="jmsInvoker" class="com.activemq.jpa.service.JmsInvokerService" />
     <bean id="jmsSubscriber" class="com.lumanmed.activemq.core.impl.SubscriberServiceImpl">
     	<property name="jmsInvoker" ref="jmsInvoker"/> 
     </bean>  
-  	<bean id="messageConverter" class="com.lumanmed.activemq.core.convert.JmsConvert" />
     <!-- 消息监听器 -->  
     <bean id="jmsListenerAdapter"  
         class="org.springframework.jms.listener.adapter.MessageListenerAdapter">  
-        <property name="delegate" ref="jmsSubscriber" />  
+        <constructor-arg ref="jmsSubscriber" />
         <property name="defaultListenerMethod" value="reciveMessage" />  
         <!-- 消息转换 -->  
         <property name="messageConverter" ref="messageConverter" />
@@ -142,10 +139,11 @@
         class="org.springframework.jms.listener.DefaultMessageListenerContainer">  
         <property name="connectionFactory" ref="jmsFactory" />  
         <property name="pubSubDomain" value="true"/>  
-        <property name="subscriptionDurable" value="true"/>  
+        <property name="subscriptionDurable" value="true"/>
         <property name="receiveTimeout" value="10000"/>
+        <property name="clientId" value="clientId_001"/>
         <property name="destination" ref="destination" />  
-        <property name="messageListener" ref="jmsListenerAdapter" />  
+        <property name="messageListener" ref="jmsListenerAdapter" />
+        <property name="concurrency" value="4-8"/>
     </bean>
-    
 </beans>

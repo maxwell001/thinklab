@@ -3,9 +3,11 @@ package com.besttone.test.poi;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.besttone.io.ExcelAction;
+
 public class Test001{ 
 	public static void main (String args[]) { 
-		LabelExcelAction la = new LabelExcelAction();
+		ExcelAction la = new ExcelAction();
 		List<Object> lsqys = new ArrayList<Object>();
 		LabelSystemQy l1 = new LabelSystemQy();
 		l1.setLine("01000000000000000000000000000000");
@@ -23,6 +25,5 @@ public class Test001{
 		lsqys.add(l2);
 		lsqys.add(l3);
 		
-		la.labelTreeToExcel(lsqys, "F:\\temp\\test.xlsx", "0");
 	}
 }

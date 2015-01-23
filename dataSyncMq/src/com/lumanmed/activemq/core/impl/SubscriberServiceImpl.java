@@ -15,7 +15,7 @@ public class SubscriberServiceImpl implements ISubscriberService{
 			if(message!=null){
 				Map<String,Object> map = (Map<String, Object>) message;
 				//处理接受到的消息
-				consumeMessage(map);
+//				consumeMessage(map);
 			}
 			System.out.println("recive message:"+message);
 		}catch(Exception e){

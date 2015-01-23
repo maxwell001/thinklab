@@ -109,7 +109,12 @@
 		<artifactId>jstl</artifactId>
 		<version>1.2</version>
 	</dependency>
-	
+	<!-- mahout -->
+	<dependency>
+	    <groupId>org.apache.mahout</groupId>
+	    <artifactId>mahout-core</artifactId>
+	    <version>0.9</version>
+	</dependency>
   </dependencies>
   <build>
     <finalName>thinkplatform</finalName>

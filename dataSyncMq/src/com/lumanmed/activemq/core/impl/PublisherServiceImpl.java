@@ -13,7 +13,7 @@ public class PublisherServiceImpl implements IPublisherService{
 	public void sendMessage(String str) {
 		try{
 			jmsTemplate.convertAndSend(destination, str);
-			System.out.println("message send...");
+//			System.out.println("message send...");
 		}catch(Exception e){
 			e.printStackTrace();
 		} 

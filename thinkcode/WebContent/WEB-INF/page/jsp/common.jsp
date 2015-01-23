@@ -45,11 +45,11 @@
 	</div>  
 	<span style="background-color: rgb(255, 255, 255);"><!-- 第二种：jsp include指令 --></span>  
 	<div>  
-		<%@ include file="*.jsp" %>  
+		<%@ include file="" %>  
 	</div>  
 	<span style="background-color: rgb(255, 255, 255);"><!-- 第三种：jsp include动作 --></span>  
 	<div>  
-		<jsp:include   page="*.jsp" flush="true"/>  
+		<jsp:include page="" flush="true"/>  
 		<!-- 传入参数时用 <jsp:param name="parameterName" value="{parameterValue | EL表达式 }" /> -->  
 	</div> 
 	

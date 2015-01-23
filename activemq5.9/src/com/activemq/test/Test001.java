@@ -2,6 +2,7 @@ package com.activemq.test;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.jms.listener.DefaultMessageListenerContainer;
 
 import com.activemq.jpa.model.AccessionNo;
 import com.activemq.jpa.service.AccessionService;
@@ -23,8 +24,16 @@ public class Test001 {
 		System.out.println(sql);
 //		Publisher pub = new Publisher();
 //		pub.sendMessage(sql);
+		DefaultMessageListenerContainer consumer =   
+	            (DefaultMessageListenerContainer)context.getBean("jmsListenerContainer");  
+	    consumer.start();  
 		IPublisherService publisher = (IPublisherService) context.getBean("jmsPublisher");
-		publisher.sendMessage(sql);
+//		publisher.sendMessage(sql);
+		for(int i=0;i<100;i++){
+			publisher.sendMessage(sql+i);
+			System.out.println("sent message "+i);
+		}
+		
 		
 		
 	}

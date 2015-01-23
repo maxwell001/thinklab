@@ -11,19 +11,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.lumanmed.activemq.core.IJmsInvoker;
 
-@Component
-@Transactional(readOnly = true)
-@Qualifier("accessionService")
 public class JmsInvokerService implements IJmsInvoker{
 
-	@Autowired
 	private EntityManagerFactory emf;
 	
 	@Override
 	public void executeSql(String sql) {
 		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
 		Query query = em.createNativeQuery(sql);
 		query.executeUpdate();
+		em.getTransaction().commit();
 	}
 
 }
