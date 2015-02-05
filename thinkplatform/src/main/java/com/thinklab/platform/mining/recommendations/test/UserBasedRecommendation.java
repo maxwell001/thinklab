@@ -8,15 +8,18 @@ import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.common.FastByIDMap;
 import org.apache.mahout.cf.taste.impl.common.FastIDSet;
 import org.apache.mahout.cf.taste.impl.common.LongPrimitiveIterator;
-import org.apache.mahout.cf.taste.impl.model.GenericBooleanPrefDataModel;
 import org.apache.mahout.cf.taste.impl.model.file.FileDataModel;
-import org.apache.mahout.cf.taste.impl.neighborhood.NearestNUserNeighborhood;
+import org.apache.mahout.cf.taste.impl.neighborhood.ThresholdUserNeighborhood;
+import org.apache.mahout.cf.taste.impl.recommender.GenericItemBasedRecommender;
 import org.apache.mahout.cf.taste.impl.recommender.GenericUserBasedRecommender;
-import org.apache.mahout.cf.taste.impl.similarity.LogLikelihoodSimilarity;
+import org.apache.mahout.cf.taste.impl.similarity.EuclideanDistanceSimilarity;
+import org.apache.mahout.cf.taste.impl.similarity.PearsonCorrelationSimilarity;
 import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.neighborhood.UserNeighborhood;
+import org.apache.mahout.cf.taste.recommender.ItemBasedRecommender;
 import org.apache.mahout.cf.taste.recommender.RecommendedItem;
-import org.apache.mahout.cf.taste.recommender.Recommender;
+import org.apache.mahout.cf.taste.recommender.UserBasedRecommender;
+import org.apache.mahout.cf.taste.similarity.ItemSimilarity;
 import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 
 public class UserBasedRecommendation {
@@ -34,14 +37,17 @@ public class UserBasedRecommendation {
 	public static void main(String[] args) {
 		UserBasedRecommendation test = new UserBasedRecommendation();
 		try {
-//			DataModel model = new FileDataModel(new File("F:/temp/201412/dataset.csv"));
-//			UserSimilarity similarity = new PearsonCorrelationSimilarity(model);
-//			UserNeighborhood neighborhood = new ThresholdUserNeighborhood(0.1, similarity, model);
-//			System.out.println("neighborhood:"+neighborhood.getUserNeighborhood(2));
-//			UserBasedRecommender recommender = new GenericUserBasedRecommender(model, neighborhood, similarity);
+			DataModel model = new FileDataModel(new File("F:/temp/201412/dataset.csv"));
+			UserSimilarity similarity = new PearsonCorrelationSimilarity(model);
+			UserNeighborhood neighborhood = new ThresholdUserNeighborhood(0.1, similarity, model);
+			System.out.println("neighborhood:"+neighborhood.getUserNeighborhood(2));
+			UserBasedRecommender recommender = new GenericUserBasedRecommender(model, neighborhood, similarity);
 //			ItemSimilarity itemSimilarity = new EuclideanDistanceSimilarity(model);
 //			ItemBasedRecommender recommender = new GenericItemBasedRecommender(model,itemSimilarity);
-//			List<RecommendedItem> recommendations = recommender.recommend(2, 3);
+			List<RecommendedItem> recommendations = recommender.recommend(2, 3);
+			for (RecommendedItem recommendation : recommendations) {
+			  System.out.println(recommendation);
+			}
 			/*FastByIDMap<FastIDSet> fastId = GenericBooleanPrefDataModel.toDataMap(model);
 			DataModel booleanModel = new GenericBooleanPrefDataModel(fastId);
 			System.out.println(booleanModel.getNumUsers());
@@ -52,7 +58,7 @@ public class UserBasedRecommendation {
 			for (RecommendedItem recommendation : recommendations) {
 			  System.out.println(recommendation);
 			}*/
-			DataModel model = new GenericBooleanPrefDataModel(
+			/*DataModel model = new GenericBooleanPrefDataModel(
 			GenericBooleanPrefDataModel.toDataMap(
 			new FileDataModel(new File("F:/temp/201412/sss.csv"))));
 			//
@@ -63,7 +69,7 @@ public class UserBasedRecommendation {
 			List<RecommendedItem> recommendations = recommender.recommend(2, 4);
 			for (RecommendedItem recommendation : recommendations) {
 			  System.out.println(recommendation);
-			}
+			}*/
 //			RecommenderEvaluator evaluator =
 //			new AverageAbsoluteDifferenceRecommenderEvaluator();
 			/*RecommenderIRStatsEvaluator evaluator = new GenericRecommenderIRStatsEvaluator();
