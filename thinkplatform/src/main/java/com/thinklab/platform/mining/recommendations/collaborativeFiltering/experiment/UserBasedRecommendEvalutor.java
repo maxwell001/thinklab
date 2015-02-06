@@ -31,7 +31,7 @@ public class UserBasedRecommendEvalutor {
 					return new GenericUserBasedRecommender(dataModel, neighborhood, similarity);
 				}
 			};
-			double rating = evaluator.evaluate(builder, null, dm, 0.9, 0.05);
+			double rating = evaluator.evaluate(builder, null, dm, 0.8, 0.1);
 			System.out.println(rating);
 		} catch (Exception e) {
 			e.printStackTrace();
