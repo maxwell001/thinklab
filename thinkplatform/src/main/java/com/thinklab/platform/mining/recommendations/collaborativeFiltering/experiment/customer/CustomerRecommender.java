@@ -17,7 +17,9 @@ import org.apache.mahout.cf.taste.recommender.IDRescorer;
 import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.apache.mahout.cf.taste.recommender.Recommender;
 import org.apache.mahout.cf.taste.similarity.UserSimilarity;
-
+/*
+ * 个性化推荐引擎
+ */
 public class CustomerRecommender implements Recommender{
 	
 	private Recommender delegate;
