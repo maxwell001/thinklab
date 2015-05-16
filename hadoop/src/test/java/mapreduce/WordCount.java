@@ -39,13 +39,13 @@ public class WordCount {
 			conf = context.getConfiguration();
 			caseSensitive = conf.getBoolean("wordcount.case.sensitive", true);
 			if (conf.getBoolean("wordcount.skip.patterns", true)) {
-				URI[] patternsURIs = Job.getInstance(conf).getc
+				/*URI[] patternsURIs = Job.getInstance(conf).getc
 //				URI[] patternsURIs = {};
 				for (URI patternsURI : patternsURIs) {
 					Path patternsPath = new Path(patternsURI.getPath());
 					String patternsFileName = patternsPath.getName().toString();
 					parseSkipFile(patternsFileName);
-				}
+				}*/
 			}
 		}
 	
@@ -110,7 +110,6 @@ public class WordCount {
 		List<String> otherArgs = new ArrayList<String>();
 		for (int i=0; i < remainingArgs.length; ++i) {
 			if ("-skip".equals(remainingArgs[i])) {
-				job.(new Path(remainingArgs[++i]).toUri());
 				job.getConfiguration().setBoolean("wordcount.skip.patterns", true);
 			} else {
 				otherArgs.add(remainingArgs[i]);
