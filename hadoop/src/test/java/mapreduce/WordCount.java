@@ -1,4 +1,4 @@
-package mapreduce;
+package test.java.mapreduce;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

@@ -1,4 +1,4 @@
-package com.besttone.io;
+package src.com.besttone.io;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -12,15 +12,15 @@ import java.io.Reader;
 
 public class ReadFile {
 	/** 
-	* ÒÔ×Ö½ÚÎªµ¥Î»¶ÁÈ¡ÎÄ¼þ£¬³£ÓÃÓÚ¶Á¶þ½øÖÆÎÄ¼þ£¬ÈçÍ¼Æ¬¡¢ÉùÒô¡¢Ó°ÏñµÈÎÄ¼þ¡£ 
-	* @param fileName ÎÄ¼þµÄÃû 
+	* ï¿½ï¿½ï¿½Ö½ï¿½Îªï¿½ï¿½Î»ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ 
+	* @param fileName ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	*/ 
 	public static void readFileByBytes(String fileName){ 
 		File file = new File(fileName); 
 		InputStream in = null; 
 		try { 
-			System.out.println("ÒÔ×Ö½ÚÎªµ¥Î»¶ÁÈ¡ÎÄ¼þÄÚÈÝ£¬Ò»´Î¶ÁÒ»¸ö×Ö½Ú£º"); 
-			// Ò»´Î¶ÁÒ»¸ö×Ö½Ú 
+			System.out.println("ï¿½ï¿½ï¿½Ö½ï¿½Îªï¿½ï¿½Î»ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ý£ï¿½Ò»ï¿½Î¶ï¿½Ò»ï¿½ï¿½ï¿½Ö½Ú£ï¿½"); 
+			// Ò»ï¿½Î¶ï¿½Ò»ï¿½ï¿½ï¿½Ö½ï¿½ 
 			in = new FileInputStream(file); 
 			int tempbyte; 
 		while((tempbyte=in.read()) != -1){ 
@@ -32,13 +32,13 @@ public class ReadFile {
 			return; 
 		} 
 		try { 
-			System.out.println("ÒÔ×Ö½ÚÎªµ¥Î»¶ÁÈ¡ÎÄ¼þÄÚÈÝ£¬Ò»´Î¶Á¶à¸ö×Ö½Ú£º"); 
-			//Ò»´Î¶Á¶à¸ö×Ö½Ú 
+			System.out.println("ï¿½ï¿½ï¿½Ö½ï¿½Îªï¿½ï¿½Î»ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ý£ï¿½Ò»ï¿½Î¶ï¿½ï¿½ï¿½ï¿½ï¿½Ö½Ú£ï¿½"); 
+			//Ò»ï¿½Î¶ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ 
 			byte[] tempbytes = new byte[100]; 
 			int byteread = 0; 
 			in = new FileInputStream(fileName); 
 			ReadFile.showAvailableBytes(in); 
-			//¶ÁÈë¶à¸ö×Ö½Úµ½×Ö½ÚÊý×éÖÐ£¬bytereadÎªÒ»´Î¶ÁÈëµÄ×Ö½ÚÊý 
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö½Úµï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½bytereadÎªÒ»ï¿½Î¶ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ 
 			while ((byteread = in.read(tempbytes)) != -1){ 
 				System.out.write(tempbytes, 0, byteread); 
 			} 
@@ -54,21 +54,21 @@ public class ReadFile {
 	} 
 } 
 	/** 
-	* ÒÔ×Ö·ûÎªµ¥Î»¶ÁÈ¡ÎÄ¼þ£¬³£ÓÃÓÚ¶ÁÎÄ±¾£¬Êý×ÖµÈÀàÐÍµÄÎÄ¼þ 
-	* @param fileName ÎÄ¼þÃû 
+	* ï¿½ï¿½ï¿½Ö·ï¿½Îªï¿½ï¿½Î»ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½Ä¼ï¿½ 
+	* @param fileName ï¿½Ä¼ï¿½ï¿½ï¿½ 
 	*/ 
 	public static void readFileByChars(String fileName){ 
 		File file = new File(fileName); 
 		Reader reader = null; 
 		try { 
-			System.out.println("ÒÔ×Ö·ûÎªµ¥Î»¶ÁÈ¡ÎÄ¼þÄÚÈÝ£¬Ò»´Î¶ÁÒ»¸ö×Ö½Ú£º"); 
-			// Ò»´Î¶ÁÒ»¸ö×Ö·û 
+			System.out.println("ï¿½ï¿½ï¿½Ö·ï¿½Îªï¿½ï¿½Î»ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ý£ï¿½Ò»ï¿½Î¶ï¿½Ò»ï¿½ï¿½ï¿½Ö½Ú£ï¿½"); 
+			// Ò»ï¿½Î¶ï¿½Ò»ï¿½ï¿½ï¿½Ö·ï¿½ 
 			reader = new InputStreamReader(new FileInputStream(file)); 
 			int tempchar; 
 			while ((tempchar = reader.read()) != -1){ 
-			//¶ÔÓÚwindowsÏÂ£¬rnÕâÁ½¸ö×Ö·ûÔÚÒ»ÆðÊ±£¬±íÊ¾Ò»¸ö»»ÐÐ¡£ 
-			//µ«Èç¹ûÕâÁ½¸ö×Ö·û·Ö¿ªÏÔÊ¾Ê±£¬»á»»Á½´ÎÐÐ¡£ 
-			//Òò´Ë£¬ÆÁ±Îµôr£¬»òÕßÆÁ±În¡£·ñÔò£¬½«»á¶à³öºÜ¶à¿ÕÐÐ¡£ 
+			//ï¿½ï¿½ï¿½ï¿½windowsï¿½Â£ï¿½rnï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ê¾Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ 
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½Ö¿ï¿½ï¿½ï¿½Ê¾Ê±ï¿½ï¿½ï¿½á»»ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ 
+			//ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½Îµï¿½rï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½nï¿½ï¿½ï¿½ï¿½ï¿½ò£¬½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü¶ï¿½ï¿½ï¿½Ð¡ï¿½ 
 			if (((char)tempchar) != 'r'){ 
 				System.out.print((char)tempchar); 
 			} 
@@ -78,14 +78,14 @@ public class ReadFile {
 			e.printStackTrace(); 
 		} 
 		try { 
-			System.out.println("ÒÔ×Ö·ûÎªµ¥Î»¶ÁÈ¡ÎÄ¼þÄÚÈÝ£¬Ò»´Î¶Á¶à¸ö×Ö½Ú£º"); 
-			//Ò»´Î¶Á¶à¸ö×Ö·û 
+			System.out.println("ï¿½ï¿½ï¿½Ö·ï¿½Îªï¿½ï¿½Î»ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ý£ï¿½Ò»ï¿½Î¶ï¿½ï¿½ï¿½ï¿½ï¿½Ö½Ú£ï¿½"); 
+			//Ò»ï¿½Î¶ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ 
 			char[] tempchars = new char[30]; 
 			int charread = 0; 
 			reader = new InputStreamReader(new FileInputStream(fileName)); 
-			//¶ÁÈë¶à¸ö×Ö·ûµ½×Ö·ûÊý×éÖÐ£¬charreadÎªÒ»´Î¶ÁÈ¡×Ö·ûÊý 
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½charreadÎªÒ»ï¿½Î¶ï¿½È¡ï¿½Ö·ï¿½ï¿½ï¿½ 
 			while ((charread = reader.read(tempchars))!=-1){ 
-			//Í¬ÑùÆÁ±Îµôr²»ÏÔÊ¾ 
+			//Í¬ï¿½ï¿½ï¿½ï¿½ï¿½Îµï¿½rï¿½ï¿½ï¿½ï¿½Ê¾ 
 			if ((charread == tempchars.length)&&(tempchars[tempchars.length-1] != 'r')){ 
 			System.out.print(tempchars); 
 			}else{ 
@@ -110,20 +110,20 @@ public class ReadFile {
 		} 
 	} 
 	/** 
-	* ÒÔÐÐÎªµ¥Î»¶ÁÈ¡ÎÄ¼þ£¬³£ÓÃÓÚ¶ÁÃæÏòÐÐµÄ¸ñÊ½»¯ÎÄ¼þ 
-	* @param fileName ÎÄ¼þÃû 
+	* ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Î»ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ¸ï¿½Ê½ï¿½ï¿½ï¿½Ä¼ï¿½ 
+	* @param fileName ï¿½Ä¼ï¿½ï¿½ï¿½ 
 	*/ 
 	public static void readFileByLines(String fileName){ 
 		File file = new File(fileName); 
 		BufferedReader reader = null; 
 		try { 
-			System.out.println("ÒÔÐÐÎªµ¥Î»¶ÁÈ¡ÎÄ¼þÄÚÈÝ£¬Ò»´Î¶ÁÒ»ÕûÐÐ£º"); 
+			System.out.println("ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Î»ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ý£ï¿½Ò»ï¿½Î¶ï¿½Ò»ï¿½ï¿½ï¿½Ð£ï¿½"); 
 			reader = new BufferedReader(new FileReader(file)); 
 			String tempString = null; 
 			int line = 1; 
-			//Ò»´Î¶ÁÈëÒ»ÐÐ£¬Ö±µ½¶ÁÈënullÎªÎÄ¼þ½áÊø 
+			//Ò»ï¿½Î¶ï¿½ï¿½ï¿½Ò»ï¿½Ð£ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½nullÎªï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ 
 			while ((tempString = reader.readLine()) != null){ 
-			//ÏÔÊ¾ÐÐºÅ 
+			//ï¿½ï¿½Ê¾ï¿½Ðºï¿½ 
 			System.out.println("line " + line + ": " + tempString); 
 			line++; 
 		} 
@@ -140,25 +140,25 @@ public class ReadFile {
 		} 
 	} 
 	/** 
-	* Ëæ»ú¶ÁÈ¡ÎÄ¼þÄÚÈÝ 
-	* @param fileName ÎÄ¼þÃû 
+	* ï¿½ï¿½ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ 
+	* @param fileName ï¿½Ä¼ï¿½ï¿½ï¿½ 
 	*/ 
 	public static void readFileByRandomAccess(String fileName){ 
 		RandomAccessFile randomFile = null; 
 		try { 
-			System.out.println("Ëæ»ú¶ÁÈ¡Ò»¶ÎÎÄ¼þÄÚÈÝ£º"); 
-			// ´ò¿ªÒ»¸öËæ»ú·ÃÎÊÎÄ¼þÁ÷£¬°´Ö»¶Á·½Ê½ 
+			System.out.println("ï¿½ï¿½ï¿½ï¿½È¡Ò»ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ý£ï¿½"); 
+			// ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Ê½ 
 			randomFile = new RandomAccessFile(fileName, "r"); 
-			// ÎÄ¼þ³¤¶È£¬×Ö½ÚÊý 
+			// ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ 
 			long fileLength = randomFile.length(); 
-			// ¶ÁÎÄ¼þµÄÆðÊ¼Î»ÖÃ 
+			// ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼Î»ï¿½ï¿½ 
 			int beginIndex = (fileLength > 4) ? 4 : 0; 
-			//½«¶ÁÎÄ¼þµÄ¿ªÊ¼Î»ÖÃÒÆµ½beginIndexÎ»ÖÃ¡£ 
+			//ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ä¿ï¿½Ê¼Î»ï¿½ï¿½ï¿½Æµï¿½beginIndexÎ»ï¿½Ã¡ï¿½ 
 			randomFile.seek(beginIndex); 
 			byte[] bytes = new byte[10]; 
 			int byteread = 0; 
-			//Ò»´Î¶Á10¸ö×Ö½Ú£¬Èç¹ûÎÄ¼þÄÚÈÝ²»×ã10¸ö×Ö½Ú£¬Ôò¶ÁÊ£ÏÂµÄ×Ö½Ú¡£ 
-			//½«Ò»´Î¶ÁÈ¡µÄ×Ö½ÚÊý¸³¸øbyteread 
+			//Ò»ï¿½Î¶ï¿½10ï¿½ï¿½ï¿½Ö½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ï¿½10ï¿½ï¿½ï¿½Ö½Ú£ï¿½ï¿½ï¿½ï¿½Ê£ï¿½Âµï¿½ï¿½Ö½Ú¡ï¿½ 
+			//ï¿½ï¿½Ò»ï¿½Î¶ï¿½È¡ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½byteread 
 			while ((byteread = randomFile.read(bytes)) != -1){ 
 				System.out.write(bytes, 0, byteread); 
 			} 
@@ -174,12 +174,12 @@ public class ReadFile {
 		} 
 	} 
 	/** 
-	* ÏÔÊ¾ÊäÈëÁ÷ÖÐ»¹Ê£µÄ×Ö½ÚÊý 
+	* ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½Ê£ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ 
 	* @param in 
 	*/ 
 	private static void showAvailableBytes(InputStream in){ 
 		try { 
-			System.out.println("µ±Ç°×Ö½ÚÊäÈëÁ÷ÖÐµÄ×Ö½ÚÊýÎª:" + in.available()); 
+			System.out.println("ï¿½ï¿½Ç°ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½Ö½ï¿½ï¿½ï¿½Îª:" + in.available()); 
 		} catch (IOException e) { 
 			e.printStackTrace(); 
 		} 

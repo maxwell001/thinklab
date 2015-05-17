@@ -1,4 +1,4 @@
-package com.besttone.security;
+package src.com.besttone.security;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

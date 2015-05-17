@@ -1,4 +1,4 @@
-package com.besttone.util;
+package src.com.besttone.util;
 
 public class PrimitiveTypeUtil {
 	/**

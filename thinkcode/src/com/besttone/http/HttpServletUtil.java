@@ -1,4 +1,4 @@
-package com.besttone.http;
+package src.com.besttone.http;
 
 import java.io.IOException;
 
@@ -15,9 +15,9 @@ public class HttpServletUtil {
 	 */
 	public static void returnCharacter(HttpServletRequest request,HttpServletResponse response) {
 		try {
-			//·ÀÖ¹Êý¾ÝÖÐÎÄÂÒÂë
+			//ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			response.setHeader("content-type","text/html;charset=UTF-8");
-			//Í¨¹ýPrintWriterÏòä¯ÀÀÆ÷·µ»Ø×Ö·û´®
+			//Í¨ï¿½ï¿½PrintWriterï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½
 			response.getWriter().print("chinese character");
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -26,9 +26,9 @@ public class HttpServletUtil {
 	//clear sessioin
 	public void logout(HttpServletRequest request,HttpServletResponse response){
 		try{
-			//Çå¿Õsession
+			//ï¿½ï¿½ï¿½session
 			request.getSession().invalidate();
-			//·µ»ØµÇÂ½Ò³Ãæ
+			//ï¿½ï¿½ï¿½Øµï¿½Â½Ò³ï¿½ï¿½
 			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
 			rd.forward(request, response);
 		}catch(Exception e){
@@ -36,13 +36,13 @@ public class HttpServletUtil {
 		}
 	}
 
-	//jspÒ³ÃæÌø×ª·½·¨,forward
+	//jspÒ³ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½,forward
 	public void forward(HttpServletRequest request,HttpServletResponse response){   
 		try {
 			response.setContentType("text/html; charset=gb2312");   
 			ServletContext sc = request.getServletContext();   
 			RequestDispatcher rd = null;   
-			rd = sc.getRequestDispatcher("/index.jsp"); //¶¨ÏòµÄÒ³Ãæ   
+			rd = sc.getRequestDispatcher("/index.jsp"); //ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½   
 			rd.forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
