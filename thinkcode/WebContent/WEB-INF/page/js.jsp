@@ -15,10 +15,8 @@
 			         event.srcElement.readOnly == true)) || 
 			        ((event.ctrlKey) && ((code == 78) || (code == 82)) ) ||  //CtrlN,CtrlR 
 			        (code == 116) ) {  //F5 
-			        event.keyCode = 0; 
-			        event.returnValue = false; 
+				ev.preventDefault();
 			    }
-			return true;
 		}	
 	
 		//处理键盘事件 禁止后退键（Backspace）密码或单行、多行文本框除外
@@ -39,18 +37,16 @@
 	                    ?true:false;        
 	        //判断
 	        if(flag2){
-	            return false;
+	            ev.preventDefault();
 	        }
 	        if(flag1){   
-	            return false;   
+	        	ev.preventDefault();
 	        }   
 	    }
-		window.onload=function(){
-		    //禁止后退键 作用于Firefox、Opera
-		    document.onkeypress=banBackSpace;
-		    //禁止后退键  作用于IE、Chrome
-		    document.onkeydown=banBackSpace;
-		}
+	    //监听键盘事件，禁止后退键 作用于Firefox、Opera
+	    document.onkeypress=banBackSpace;
+	    //监听键盘事件，禁止后退键  作用于IE、Chrome
+	    document.onkeydown=banBackSpace;
 	</script>
 </head>
 </html>
