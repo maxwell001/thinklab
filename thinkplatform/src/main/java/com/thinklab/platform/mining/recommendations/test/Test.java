@@ -13,5 +13,6 @@ public class Test {
 	public static void main(String[] args) {
 		long[] l = {1,2,3};
 		System.out.println(Array.getLong(l, 2));
+		System.out.println("");
 	}
 }
