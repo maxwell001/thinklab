@@ -1,4 +1,4 @@
-package src.com.besttone.security;
+package com.besttone.security;
 
 /**
  * 

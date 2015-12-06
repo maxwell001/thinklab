@@ -1,4 +1,4 @@
-package src.com.think.algorithm;
+package com.think.algorithm;
 
 public class InsertionSort {
 	

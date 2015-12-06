@@ -1,9 +1,9 @@
-package src.com.besttone.test.poi;
+package com.besttone.test.poi;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import src.com.besttone.io.ExcelAction;
+import com.besttone.io.ExcelAction;
 
 public class Test001{ 
 	public static void main (String args[]) { 

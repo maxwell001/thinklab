@@ -1,4 +1,4 @@
-package src.com.besttone.http;
+package com.besttone.http;
 
 import java.io.IOException;
 

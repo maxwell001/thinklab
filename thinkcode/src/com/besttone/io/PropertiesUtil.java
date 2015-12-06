@@ -1,4 +1,4 @@
-package src.com.besttone.io;
+package com.besttone.io;
 
 import java.io.IOException;
 import java.io.InputStream;
